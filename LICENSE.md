@@ -1,6 +1,7 @@
 The MIT License
 
 Copyright (c) 2020 [Joshua Parker](mailto:josh@joshuaparker.blog)
+
 Copyright (c) 2016, Sinergi
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

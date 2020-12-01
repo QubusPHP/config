@@ -24,4 +24,11 @@ interface ConfigContainer
      * @return void|self
      */
     public function setConfigKey(string $key, $value);
+
+    /**
+     * Checks if a key exists.
+     *
+     * @return bool
+     */
+    public function hasConfigKey(string $key): bool;
 }

@@ -41,6 +41,16 @@ class Collection extends Configuration implements ArrayAccess, ConfigContainer
         return $this;
     }
 
+    /**
+    * Checks if a key exists.
+    *
+    * @return bool
+    */
+    public function hasConfigKey(string $key): bool
+    {
+        return isset($this->container[$key]);
+    }
+
     public function removeConfigKey(string $key)
     {
         unset($this->container[$key]);

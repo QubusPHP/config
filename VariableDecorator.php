@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Qubus\Config
+ *
+ * @link       https://github.com/QubusPHP/config
+ * @copyright  2020 Joshua Parker
+ * @license    https://opensource.org/licenses/mit-license.php MIT License
+ *
+ * @since      1.0.0
+ */
+
 declare(strict_types=1);
 
 namespace Qubus\Config;
@@ -44,6 +54,14 @@ class VariableDecorator implements ConfigContainer
     public function setConfigKey(string $dotPath, $value)
     {
         return $this->config->setConfigKey($dotPath, $value);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasConfigKey(string $key): bool
+    {
+        return $this->config->hasConfigKey($key);
     }
 
     /**

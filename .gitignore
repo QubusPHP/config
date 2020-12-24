@@ -1,3 +1,4 @@
-.phpcs-cache
-index.php
 /vendor/
+.phpcs-cache
+composer.lock
+index.php

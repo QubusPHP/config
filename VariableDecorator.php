@@ -57,6 +57,14 @@ class VariableDecorator implements ConfigContainer
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function hasConfigKey(string $key): bool
+    {
+        return $this->config->hasConfigKey($key);
+    }
+
+    /**
      * @param mixed $value
      * @return mixed
      */

@@ -30,7 +30,7 @@
 			"Qubus\\Config\\": ""
 		},
 		"files": [
-			"helpers.php"
+			"Helpers/core.php"
 		]
 	},
 	"autoload-dev": {

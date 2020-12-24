@@ -185,7 +185,7 @@ timezone: America/New_York
 Example of using Dotenv in a PHP configuration file:
 
 ```php
-use function Qubus\Config\env;
+use function Qubus\Config\Helpers\env;
 
 return [
     'timezone' => env('TIMEZONE', "Denver")

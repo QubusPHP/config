@@ -28,7 +28,7 @@ Use the factory to instanciate a Config collection class:
 use Qubus\Config\Collection;
 
 $config = Collection::factory([
-    'path' => __DIR__ . "/config"
+    'path' => __DIR__ . '/config'
 ]);
 ```
 
@@ -41,7 +41,7 @@ directory ``config/*``. Consider the following example:
 use Qubus\Config\Collection;
 
 $config = Collection::factory([
-    'path' => __DIR__ . "/config",
+    'path' => __DIR__ . '/config',
     'environment' => 'prod'
 ]);
 ```
@@ -53,7 +53,7 @@ where the `.env` file. Like in this example:
 use Qubus\Config\Collection;
 
 $config = Collection::factory([
-    'path' => __DIR__ . "/config",
+    'path' => __DIR__ . '/config',
     'dotenv' => __DIR__,
     'environment' => 'prod'
 ]);

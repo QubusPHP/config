@@ -12,17 +12,15 @@
 
 declare(strict_types=1);
 
-namespace Qubus\Config\Loader;
+namespace Qubus\Config\Helpers;
 
-class PhpLoader implements Loader
+use Qubus\Config\Configuration;
+
+function env($key, $default = null)
 {
-    public const EXTENSION = 'php';
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function load($file)
-    {
-        return require $file;
+    $dotenv = Configuration::$env;
+    if (is_array($dotenv) && isset($dotenv[$key])) {
+        return $dotenv[$key];
     }
+    return $default;
 }

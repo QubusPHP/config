@@ -39,7 +39,7 @@ class Collection extends Configuration implements ArrayAccess, ConfigContainer
      * Set a config
      *
      * @param array $config
-     * @return $this
+     * @return void|self
      */
     public function setConfigKey(string $key, $config)
     {
@@ -61,7 +61,7 @@ class Collection extends Configuration implements ArrayAccess, ConfigContainer
         return isset($this->container[$key]);
     }
 
-    public function removeConfigKey(string $key)
+    public function removeConfigKey(string $key): void
     {
         unset($this->container[$key]);
     }

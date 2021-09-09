@@ -11,7 +11,7 @@
 		}
 	],
 	"require": {
-		"php": "^8.0",
+		"php": "7.4|^8.0",
 		"psr/container": "^1.1",
 		"qubus/exception": "^1.2",
 		"sandrokeil/interop-config": "^2.2",

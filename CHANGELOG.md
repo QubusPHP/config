@@ -1,7 +1,7 @@
 # ChangeLog
 
-## 1.1.0 - TBD
-- Require PHP version 8.0.x
+## 1.1.0 - 2021-09-09
+- Added PHP version 8.0.x to composer
 - PHPUnit update
 - Fixed Tests
 

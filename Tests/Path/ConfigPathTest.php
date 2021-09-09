@@ -32,6 +32,8 @@ class ConfigPathTest extends TestCase
      */
     public function testConfigConstructorBadPath()
     {
+        $this->expectException(\Qubus\Config\Path\PathNotFoundException::class);
+
         new ConfigPath("/this/path/does/not/exists");
     }
 }

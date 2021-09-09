@@ -32,6 +32,8 @@ class PathCollectionTest extends TestCase
      */
     public function testAddBadPath()
     {
+        $this->expectException(\Qubus\Config\Path\PathNotFoundException::class);
+
         $pathCollection = new PathCollection();
         $pathCollection->add("this/path/does/not/exists");
     }

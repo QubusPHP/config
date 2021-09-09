@@ -24,7 +24,7 @@ class CollectionEnvironmentTest extends TestCase
      */
     private $config;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->config = Collection::factory([
             'path' => __DIR__ . "/../files",

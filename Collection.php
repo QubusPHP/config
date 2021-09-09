@@ -4,7 +4,8 @@
  * Qubus\Config
  *
  * @link       https://github.com/QubusPHP/config
- * @copyright  2020 Joshua Parker
+ * @copyright  2020 Joshua Parker <josh@joshuaparker.blog>
+ * @copyright  2016 Sinergi
  * @license    https://opensource.org/licenses/mit-license.php MIT License
  *
  * @since      1.0.0
@@ -39,7 +40,7 @@ class Collection extends Configuration implements ArrayAccess, ConfigContainer
      * Set a config
      *
      * @param array $config
-     * @return $this
+     * @return void|self
      */
     public function setConfigKey(string $key, $config)
     {
@@ -61,7 +62,7 @@ class Collection extends Configuration implements ArrayAccess, ConfigContainer
         return isset($this->container[$key]);
     }
 
-    public function removeConfigKey(string $key)
+    public function removeConfigKey(string $key): void
     {
         unset($this->container[$key]);
     }

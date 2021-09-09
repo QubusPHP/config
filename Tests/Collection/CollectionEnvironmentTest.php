@@ -4,7 +4,8 @@
  * Qubus\Config
  *
  * @link       https://github.com/QubusPHP/config
- * @copyright  2020 Joshua Parker
+ * @copyright  2020 Joshua Parker <josh@joshuaparker.blog>
+ * @copyright  2016 Sinergi
  * @license    https://opensource.org/licenses/mit-license.php MIT License
  *
  * @since      1.0.0
@@ -24,7 +25,7 @@ class CollectionEnvironmentTest extends TestCase
      */
     private $config;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->config = Collection::factory([
             'path' => __DIR__ . "/../files",

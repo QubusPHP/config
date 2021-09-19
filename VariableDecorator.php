@@ -15,8 +15,6 @@ declare(strict_types=1);
 
 namespace Qubus\Config;
 
-use Northwoods\Config\ConfigInterface;
-
 use function array_map;
 use function is_array;
 use function is_string;

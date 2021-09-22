@@ -17,28 +17,29 @@ namespace Qubus\Tests\Config;
 
 use PHPUnit\Framework\TestCase;
 use Qubus\Config\Parser;
+use PHPUnit\Framework\Assert;
 
 class ParserTest extends TestCase
 {
     public function testGetKey()
     {
         $key = Parser::getKey('this.is.file');
-        $this->assertCount(3, $key);
-        $this->assertCount(1, $key[2]);
-        $this->assertEquals('this', $key[0]);
-        $this->assertEquals('is', $key[1]);
-        $this->assertEquals('file', $key[2][0]);
+        Assert::assertCount(3, $key);
+        Assert::assertCount(1, $key[2]);
+        Assert::assertEquals('this', $key[0]);
+        Assert::assertEquals('is', $key[1]);
+        Assert::assertEquals('file', $key[2][0]);
     }
 
     public function testGetKeyArray()
     {
         $key = Parser::getKey('this.is.an.array');
-        $this->assertCount(3, $key);
-        $this->assertCount(2, $key[2]);
-        $this->assertEquals('this', $key[0]);
-        $this->assertEquals('is', $key[1]);
-        $this->assertEquals('an', $key[2][0]);
-        $this->assertEquals('array', $key[2][1]);
+        Assert::assertCount(3, $key);
+        Assert::assertCount(2, $key[2]);
+        Assert::assertEquals('this', $key[0]);
+        Assert::assertEquals('is', $key[1]);
+        Assert::assertEquals('an', $key[2][0]);
+        Assert::assertEquals('array', $key[2][1]);
     }
 
     public function testGetValue()
@@ -51,6 +52,6 @@ class ParserTest extends TestCase
             ]
         ];
         [$file, $key, $sub] = Parser::getKey('file.hi.find.this');
-        $this->assertEquals('Hello', Parser::getValue($kaystack, $key, $sub));
+        Assert::assertEquals('Hello', Parser::getValue($kaystack, $key, $sub));
     }
 }

@@ -15,8 +15,6 @@ declare(strict_types=1);
 
 namespace Qubus\Config;
 
-use Northwoods\Config\ConfigInterface;
-
 use function array_map;
 use function is_array;
 use function is_string;
@@ -77,9 +75,7 @@ class VariableDecorator implements ConfigContainer
 
         if (is_array($value)) {
             return array_map(
-                function ($value) {
-                    return $this->replaceVariables($value);
-                },
+                fn ($value) => $this->replaceVariables($value),
                 $value
             );
         }

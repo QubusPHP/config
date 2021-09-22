@@ -75,9 +75,7 @@ class VariableDecorator implements ConfigContainer
 
         if (is_array($value)) {
             return array_map(
-                function ($value) {
-                    return $this->replaceVariables($value);
-                },
+                fn ($value) => $this->replaceVariables($value),
                 $value
             );
         }

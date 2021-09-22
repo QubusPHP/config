@@ -17,6 +17,7 @@ namespace Qubus\Tests\Config\Collection;
 
 use PHPUnit\Framework\TestCase;
 use Qubus\Config\Collection;
+use PHPUnit\Framework\Assert;
 
 class CollectionDotenvTest extends TestCase
 {
@@ -27,6 +28,6 @@ class CollectionDotenvTest extends TestCase
             'dotenv' => __DIR__ . "/../files"
         ]);
 
-        $this->assertEquals('bye', $config->getConfigKey('dotenv.test_var'));
+        Assert::assertEquals('bye', $config->getConfigKey('dotenv.test_var'));
     }
 }

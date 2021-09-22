@@ -18,6 +18,7 @@ namespace Qubus\Tests\Config;
 use PHPUnit\Framework\TestCase;
 use Qubus\Config\VariableDecorator;
 use Qubus\Config\Collection;
+use PHPUnit\Framework\Assert;
 
 class VariableDecoratorTest extends TestCase
 {
@@ -39,6 +40,6 @@ class VariableDecoratorTest extends TestCase
 
     public function testDecorator()
     {
-        $this->assertSame(__DIR__ . '/files/testdev1', $this->decorator->getConfigKey('app.test_dir'));
+        Assert::assertSame(__DIR__ . '/files/testdev1', $this->decorator->getConfigKey('app.test_dir'));
     }
 }

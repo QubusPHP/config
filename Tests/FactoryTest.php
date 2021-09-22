@@ -18,6 +18,7 @@ namespace Qubus\Tests\Config;
 use Qubus\Config\Collection;
 use PHPUnit\Framework\TestCase;
 use Qubus\Config\Factory;
+use PHPUnit\Framework\Assert;
 
 class FactoryTest extends TestCase
 {
@@ -26,6 +27,6 @@ class FactoryTest extends TestCase
         $factory = new Factory();
         /** @var Collection $collection */
         $collection = $factory([]);
-        $this->assertInstanceOf(Collection::class, $collection);
+        Assert::assertInstanceOf(Collection::class, $collection);
     }
 }

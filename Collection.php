@@ -53,10 +53,8 @@ class Collection extends Configuration implements ArrayAccess, ConfigContainer
     }
 
     /**
-    * Checks if a key exists.
-    *
-    * @return bool
-    */
+     * Checks if a key exists.
+     */
     public function hasConfigKey(string $key): bool
     {
         return isset($this->container[$key]);
@@ -135,7 +133,6 @@ class Collection extends Configuration implements ArrayAccess, ConfigContainer
 
     /**
      * @param int $offset
-     * @return bool
      */
     public function offsetExists($offset): bool
     {

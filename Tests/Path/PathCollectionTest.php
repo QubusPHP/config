@@ -18,6 +18,7 @@ namespace Qubus\Tests\Config\Path;
 use PHPUnit\Framework\TestCase;
 use Qubus\Config\Configuration;
 use Qubus\Config\Path\PathCollection;
+use PHPUnit\Framework\Assert;
 
 class PathCollectionTest extends TestCase
 {
@@ -25,7 +26,7 @@ class PathCollectionTest extends TestCase
     {
         $pathCollection = new PathCollection();
         $pathCollection->add(__DIR__ . "/../files");
-        $this->assertEquals(realpath(__DIR__ . "/../files"), $pathCollection->get(0)->getPath());
+        Assert::assertEquals(realpath(__DIR__ . "/../files"), $pathCollection->get(0)->getPath());
     }
 
     /**
@@ -45,7 +46,7 @@ class PathCollectionTest extends TestCase
         $pathCollection->add(__DIR__ . "/../files");
         $pathCollection->add(__DIR__ . "/../files/testdev1");
         $pathCollection->removeAll();
-        $this->assertCount(0, $pathCollection);
+        Assert::assertCount(0, $pathCollection);
     }
 
     public function testConfigConstructor()
@@ -56,8 +57,8 @@ class PathCollectionTest extends TestCase
                 __DIR__ . "/../files/testdev1",
             ]
         ]);
-        $this->assertCount(2, $config->getPaths());
-        $this->assertEquals(realpath(__DIR__ . "/../files"), $config->getPaths()->get(0)->getPath());
-        $this->assertEquals(realpath(__DIR__ . "/../files/testdev1"), $config->getPaths()->get(1)->getPath());
+        Assert::assertCount(2, $config->getPaths());
+        Assert::assertEquals(realpath(__DIR__ . "/../files"), $config->getPaths()->get(0)->getPath());
+        Assert::assertEquals(realpath(__DIR__ . "/../files/testdev1"), $config->getPaths()->get(1)->getPath());
     }
 }

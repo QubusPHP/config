@@ -17,6 +17,7 @@ namespace Qubus\Tests\Config\Collection;
 
 use PHPUnit\Framework\TestCase;
 use Qubus\Config\Collection;
+use PHPUnit\Framework\Assert;
 
 class CollectionEnvironmentTest extends TestCase
 {
@@ -36,50 +37,50 @@ class CollectionEnvironmentTest extends TestCase
     public function testSetEnvironment()
     {
         $env = $this->config->getEnvironment();
-        $this->assertEquals("testdev2", $env);
+        Assert::assertEquals("testdev2", $env);
     }
 
     public function testConfigGetWholeFile()
     {
         $test = $this->config->getConfigKey('database');
-        $this->assertEquals("pdo_mysql", $test['connections']['default']['driver']);
-        $this->assertEquals("xxxxxxxxxxxxxxxxxxx", $test['connections']['default']['password']);
+        Assert::assertEquals("pdo_mysql", $test['connections']['default']['driver']);
+        Assert::assertEquals("xxxxxxxxxxxxxxxxxxx", $test['connections']['default']['password']);
     }
 
     public function testEGetter()
     {
         $test = $this->config->getConfigKey('app.timezone');
-        $this->assertEquals("Europe/Berlin", $test);
+        Assert::assertEquals("Europe/Berlin", $test);
     }
 
     public function testConfigGetterDefault()
     {
         $test = $this->config->getConfigKey('app.test', "this a test");
-        $this->assertEquals("this a test", $test);
+        Assert::assertEquals("this a test", $test);
     }
 
     public function testConfigGetterDefaultExists()
     {
         $test = $this->config->getConfigKey('app.timezone', "this a test");
-        $this->assertEquals("Europe/Berlin", $test);
+        Assert::assertEquals("Europe/Berlin", $test);
     }
 
     public function testConfigGetterArray()
     {
         $test = $this->config->getConfigKey('database.connections.default');
-        $this->assertEquals("127.0.0.1", $test['host']);
-        $this->assertEquals("xxxxxxxxxxxxxxxxxxx", $test['password']);
+        Assert::assertEquals("127.0.0.1", $test['host']);
+        Assert::assertEquals("xxxxxxxxxxxxxxxxxxx", $test['password']);
     }
 
     public function testConfigGetterArrayDefault()
     {
         $test = $this->config->getConfigKey('database.connections.default.persistent', true);
-        $this->assertTrue($test);
+        Assert::assertTrue($test);
     }
 
     public function testConfigGetterArrayDefaultExists()
     {
         $test = $this->config->getConfigKey('database.connections.default.host', 'localhost');
-        $this->assertEquals("127.0.0.1", $test);
+        Assert::assertEquals("127.0.0.1", $test);
     }
 }

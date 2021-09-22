@@ -54,9 +54,8 @@ class ArrayCollection implements Countable, IteratorAggregate, ArrayAccess
 
     /**
      * @param string $offset
-     * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]) || array_key_exists($offset, $this->container);
     }
@@ -74,7 +73,7 @@ class ArrayCollection implements Countable, IteratorAggregate, ArrayAccess
      * @param string $offset
      * @param mixed $value
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         $this->set($offset, $value);
     }
@@ -83,9 +82,9 @@ class ArrayCollection implements Countable, IteratorAggregate, ArrayAccess
      * @param string $offset
      * @return null
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
-        return $this->remove($offset);
+        $this->remove($offset);
     }
 
     public function count(): int

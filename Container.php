@@ -91,7 +91,7 @@ class Container implements ContainerInterface
         return null;
     }
 
-    public function add($alias, $className, $target = null)
+    public function add($alias, $className, $target = null): void
     {
         if (null === $target) {
             $target = $className;

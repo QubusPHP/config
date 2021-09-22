@@ -38,8 +38,6 @@ interface ConfigContainer
 
     /**
      * Checks if a key exists.
-     *
-     * @return bool
      */
     public function hasConfigKey(string $key): bool;
 }

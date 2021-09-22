@@ -18,6 +18,7 @@ namespace Qubus\Tests\Config\Path;
 use PHPUnit\Framework\TestCase;
 use Qubus\Config\Configuration;
 use Qubus\Config\Path\ConfigPath;
+use PHPUnit\Framework\Assert;
 
 class ConfigPathTest extends TestCase
 {
@@ -25,7 +26,7 @@ class ConfigPathTest extends TestCase
     {
         $config = new Configuration(['path' => __DIR__ . "/../files"]);
         $path = $config->getPaths()->get(0)->getPath();
-        $this->assertEquals(realpath(__DIR__ . "/../files"), $path);
+        Assert::assertEquals(realpath(__DIR__ . "/../files"), $path);
     }
 
     /**

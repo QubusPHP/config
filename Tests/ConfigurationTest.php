@@ -22,6 +22,7 @@ use Qubus\Config\Configuration;
 use Qubus\Config\Factory;
 use Qubus\Config\Path\PathCollection;
 use Qubus\Config\Parser;
+use PHPUnit\Framework\Assert;
 
 class ConfigurationTest extends TestCase
 {
@@ -33,10 +34,10 @@ class ConfigurationTest extends TestCase
             'dotenv' => __DIR__ . "/files"
         ]);
 
-        $this->assertInstanceOf(PathCollection::class, $configuration->getPaths());
-        $this->assertCount(1, $configuration->getPaths());
-        $this->assertEquals('production', $configuration->getEnvironment());
-        $this->assertInstanceOf(Dotenv::class, $configuration->getDotenv());
+        Assert::assertInstanceOf(PathCollection::class, $configuration->getPaths());
+        Assert::assertCount(1, $configuration->getPaths());
+        Assert::assertEquals('production', $configuration->getEnvironment());
+        Assert::assertInstanceOf(Dotenv::class, $configuration->getDotenv());
     }
 
     public function testInstance()
@@ -47,10 +48,10 @@ class ConfigurationTest extends TestCase
             'dotenv' => __DIR__ . "/files"
         ]));
 
-        $this->assertInstanceOf(PathCollection::class, $configuration->getPaths());
-        $this->assertCount(1, $configuration->getPaths());
-        $this->assertEquals('production', $configuration->getEnvironment());
-        $this->assertInstanceOf(Dotenv::class, $configuration->getDotenv());
+        Assert::assertInstanceOf(PathCollection::class, $configuration->getPaths());
+        Assert::assertCount(1, $configuration->getPaths());
+        Assert::assertEquals('production', $configuration->getEnvironment());
+        Assert::assertInstanceOf(Dotenv::class, $configuration->getDotenv());
     }
 
     public function testConfigAsClassFunctionWithParserNumber1()
@@ -61,7 +62,7 @@ class ConfigurationTest extends TestCase
 
         $port = Parser::getValue($config(), $key, $sub);
 
-        $this->assertEquals(443, $port);
+        Assert::assertEquals(443, $port);
     }
 
     public function testConfigAsClassFunctionWithParserNumber2()
@@ -72,7 +73,7 @@ class ConfigurationTest extends TestCase
 
         $port = Parser::getValue($config(), $key, $sub);
 
-        $this->assertEquals('s3cr3t', $port);
+        Assert::assertEquals('s3cr3t', $port);
     }
 }
 

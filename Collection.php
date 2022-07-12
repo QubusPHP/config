@@ -132,16 +132,16 @@ class Collection extends Configuration implements ArrayAccess, ConfigContainer
     }
 
     /**
-     * @param int $offset
+     * @param mixed $offset
      */
-    public function offsetExists($offset): bool
+    public function offsetExists(mixed $offset): bool
     {
         $item = $this->getConfigKey($offset);
         return isset($item);
     }
 
     /**
-     * @param int $offset
+     * @param mixed $offset
      * @return mixed
      */
     public function offsetGet(mixed $offset): mixed
@@ -150,7 +150,7 @@ class Collection extends Configuration implements ArrayAccess, ConfigContainer
     }
 
     /**
-     * @param int $offset
+     * @param mixed $offset
      * @param mixed $value
      */
     public function offsetSet(mixed $offset, mixed $value): void
@@ -159,7 +159,7 @@ class Collection extends Configuration implements ArrayAccess, ConfigContainer
     }
 
     /**
-     * @param int $offset
+     * @param mixed $offset
      */
     public function offsetUnset(mixed $offset): void
     {

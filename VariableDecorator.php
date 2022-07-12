@@ -23,7 +23,7 @@ use function strtr;
 class VariableDecorator implements ConfigContainer
 {
     /** @var ConfigInterface $config */
-    private ConfigContainer $config;
+    public readonly ConfigContainer $config;
 
     /** @var array $variables */
     private array $variables = [];

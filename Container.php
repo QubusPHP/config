@@ -24,7 +24,7 @@ use function is_callable;
 
 class Container implements ContainerInterface
 {
-    private ContainerInterface $diContainer;
+    public readonly ContainerInterface $diContainer;
 
     /** @var array $container */
     private array $container = [];

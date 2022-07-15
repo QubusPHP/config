@@ -1,5 +1,9 @@
 # ChangeLog
 
+## 2.0.0 - 2022-07-12
+- PHP 8.1+ required
+- Few bug fixes and PHP 8.1 changes
+
 ## 1.1.1 - 2021-09-22
 - Composer update
 - File header changes

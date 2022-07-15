@@ -32,9 +32,9 @@ class Container implements ContainerInterface
     /** @var array $instances */
     private array $instances = [];
 
-    public function __construct(ContainerInterface $container)
+    public function __construct(ContainerInterface $diContainer )
     {
-        $this->diContainer = $container;
+        $this->diContainer = $diContainer ;
     }
 
     /**

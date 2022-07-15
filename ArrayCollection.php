@@ -64,16 +64,16 @@ class ArrayCollection implements Countable, IteratorAggregate, ArrayAccess
      * @param string $offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet(mixed $offset): mixed
     {
         return $this->get($offset);
     }
 
     /**
-     * @param string $offset
+     * @param mixed $offset
      * @param mixed $value
      */
-    public function offsetSet($offset, $value): void
+    public function offsetSet(mixed $offset, mixed $value): void
     {
         $this->set($offset, $value);
     }
@@ -82,7 +82,7 @@ class ArrayCollection implements Countable, IteratorAggregate, ArrayAccess
      * @param string $offset
      * @return null
      */
-    public function offsetUnset($offset): void
+    public function offsetUnset(mixed $offset): void
     {
         $this->remove($offset);
     }

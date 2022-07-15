@@ -72,7 +72,7 @@ class Collection extends Configuration implements ArrayAccess, ConfigContainer
      * @throws TypeException
      * @return mixed
      */
-    public function getConfigKey(string $key, $default = null)
+    public function getConfigKey(string $key, $default = null): mixed
     {
         if (! is_string($key) || empty($key)) {
             throw new TypeException(
@@ -132,36 +132,36 @@ class Collection extends Configuration implements ArrayAccess, ConfigContainer
     }
 
     /**
-     * @param int $offset
+     * @param mixed $offset
      */
-    public function offsetExists($offset): bool
+    public function offsetExists(mixed $offset): bool
     {
         $item = $this->getConfigKey($offset);
         return isset($item);
     }
 
     /**
-     * @param int $offset
+     * @param mixed $offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet(mixed $offset): mixed
     {
         return $this->getConfigKey($offset);
     }
 
     /**
-     * @param int $offset
+     * @param mixed $offset
      * @param mixed $value
      */
-    public function offsetSet($offset, $value): void
+    public function offsetSet(mixed $offset, mixed $value): void
     {
         $this->setConfigKey($offset, $value);
     }
 
     /**
-     * @param int $offset
+     * @param mixed $offset
      */
-    public function offsetUnset($offset): void
+    public function offsetUnset(mixed $offset): void
     {
         $this->removeConfigKey($offset);
     }

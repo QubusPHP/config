@@ -24,7 +24,7 @@ use function is_callable;
 
 class Container implements ContainerInterface
 {
-    private ContainerInterface $diContainer;
+    public readonly ContainerInterface $diContainer;
 
     /** @var array $container */
     private array $container = [];
@@ -32,9 +32,9 @@ class Container implements ContainerInterface
     /** @var array $instances */
     private array $instances = [];
 
-    public function __construct(ContainerInterface $container)
+    public function __construct(ContainerInterface $diContainer )
     {
-        $this->diContainer = $container;
+        $this->diContainer = $diContainer ;
     }
 
     /**

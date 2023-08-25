@@ -7,8 +7,6 @@
  * @copyright  2020 Joshua Parker <josh@joshuaparker.blog>
  * @copyright  2016 Sinergi
  * @license    https://opensource.org/licenses/mit-license.php MIT License
- *
- * @since      1.0.0
  */
 
 declare(strict_types=1);
@@ -34,6 +32,9 @@ class ConfigLoader
     ];
 
     /**
+     * @param PathCollection $paths
+     * @param string|null $env
+     * @param string $file
      * @return array
      */
     public static function load(PathCollection $paths, ?string $env, string $file): array
@@ -49,6 +50,8 @@ class ConfigLoader
 
     /**
      * @param string|PathCollection $path
+     * @param string|null $env
+     * @param string $file
      * @return array
      */
     public static function loadFile($path, ?string $env, string $file): array
@@ -81,7 +84,7 @@ class ConfigLoader
     /**
      * @param array $array1
      * @param array $array2
-     * @param array $array3
+     * @param array|null $array3
      * @return array
      */
     public static function mergeArrays(array $array1, array $array2, ?array $array3 = null): array

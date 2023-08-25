@@ -7,8 +7,6 @@
  * @copyright  2020 Joshua Parker <josh@joshuaparker.blog>
  * @copyright  2016 Sinergi
  * @license    https://opensource.org/licenses/mit-license.php MIT License
- *
- * @since      1.0.0
  */
 
 declare(strict_types=1);
@@ -42,17 +40,17 @@ class VariableDecorator implements ConfigContainer
     /**
      * {@inheritdoc}
      */
-    public function getConfigKey(string $dotPath, $default = null)
+    public function getConfigKey(string $key, mixed $default = null): mixed
     {
-        return $this->replaceVariables($this->config->getConfigKey($dotPath));
+        return $this->replaceVariables($this->config->getConfigKey($key));
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setConfigKey(string $dotPath, $value)
+    public function setConfigKey(string $key, mixed $value)
     {
-        return $this->config->setConfigKey($dotPath, $value);
+        return $this->config->setConfigKey($key, $value);
     }
 
     /**
@@ -67,7 +65,7 @@ class VariableDecorator implements ConfigContainer
      * @param mixed $value
      * @return mixed
      */
-    private function replaceVariables($value)
+    private function replaceVariables(mixed $value): mixed
     {
         if (is_string($value)) {
             return strtr($value, $this->variables);

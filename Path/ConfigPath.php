@@ -7,8 +7,6 @@
  * @copyright  2020 Joshua Parker <josh@joshuaparker.blog>
  * @copyright  2016 Sinergi
  * @license    https://opensource.org/licenses/mit-license.php MIT License
- *
- * @since      1.0.0
  */
 
 declare(strict_types=1);
@@ -24,6 +22,9 @@ class ConfigPath implements Path
     /** @var string */
     protected $path;
 
+    /**
+     * @throws PathNotFoundException
+     */
     public function __construct(?string $path = null)
     {
         if ($path) {
@@ -35,7 +36,7 @@ class ConfigPath implements Path
      * @return $this
      * @throws PathNotFoundException
      */
-    public function setPath(?string $path = null)
+    public function setPath(?string $path = null): static
     {
         $path = realpath($path);
         if (! is_dir((string) $path)) {

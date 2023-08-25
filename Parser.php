@@ -7,8 +7,6 @@
  * @copyright  2020 Joshua Parker <josh@joshuaparker.blog>
  * @copyright  2016 Sinergi
  * @license    https://opensource.org/licenses/mit-license.php MIT License
- *
- * @since      1.0.0
  */
 
 declare(strict_types=1);
@@ -24,6 +22,7 @@ use function is_array;
 class Parser
 {
     /**
+     * @param string $name
      * @return array
      */
     public static function getKey(string $name): array
@@ -47,7 +46,8 @@ class Parser
     }
 
     /**
-     * @param array $haystack
+     * @param array|null $haystack
+     * @param string|null $key
      * @param null|array $sub
      * @param null|mixed $default
      * @return mixed
@@ -57,7 +57,7 @@ class Parser
         ?string $key = null,
         ?array $sub = null,
         $default = null
-    ) {
+    ): mixed {
         if (empty($key) && ! isset($haystack)) {
             return $default;
         } elseif (empty($key)) {
@@ -92,7 +92,7 @@ class Parser
      * @param array $haystack
      * @return mixed
      */
-    private static function findInMultiArray(array $needle, array $haystack)
+    private static function findInMultiArray(array $needle, array $haystack): mixed
     {
         $currentNeedle = current($needle);
         $needle = array_slice($needle, 1);

@@ -7,8 +7,6 @@
  * @copyright  2020 Joshua Parker <josh@joshuaparker.blog>
  * @copyright  2016 Sinergi
  * @license    https://opensource.org/licenses/mit-license.php MIT License
- *
- * @since      1.0.0
  */
 
 declare(strict_types=1);
@@ -32,7 +30,7 @@ class Factory implements RequiresMandatoryOptions, RequiresConfig
      * @param array|Configuration $config
      * @return Collection
      */
-    public function __invoke($config)
+    public function __invoke(array|Configuration $config): Collection
     {
         if (is_array($config)) {
             $config = new Configuration($config);
@@ -44,7 +42,7 @@ class Factory implements RequiresMandatoryOptions, RequiresConfig
     /**
      * @return string
      */
-    public function vendorName()
+    public function vendorName(): string
     {
         return self::VENDOR_NAME;
     }
@@ -52,7 +50,7 @@ class Factory implements RequiresMandatoryOptions, RequiresConfig
     /**
      * @return string
      */
-    public function packageName()
+    public function packageName(): string
     {
         return self::PACKAGE_NAME;
     }
@@ -68,7 +66,7 @@ class Factory implements RequiresMandatoryOptions, RequiresConfig
     /**
      * @return string[] List with optional options
      */
-    public function optionalOptions()
+    public function optionalOptions(): array
     {
         return [
             'path',

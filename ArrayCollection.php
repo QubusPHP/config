@@ -7,8 +7,6 @@
  * @copyright  2020 Joshua Parker <josh@joshuaparker.blog>
  * @copyright  2016 Sinergi
  * @license    https://opensource.org/licenses/mit-license.php MIT License
- *
- * @since      1.0.0
  */
 
 declare(strict_types=1);
@@ -80,7 +78,7 @@ class ArrayCollection implements Countable, IteratorAggregate, ArrayAccess
 
     /**
      * @param string $offset
-     * @return null
+     * @return void
      */
     public function offsetUnset(mixed $offset): void
     {
@@ -98,11 +96,11 @@ class ArrayCollection implements Countable, IteratorAggregate, ArrayAccess
     }
 
     /**
-     * @param string $key
-     * @param mixed $default
+     * @param mixed $key
+     * @param mixed|null $default
      * @return null|mixed
      */
-    public function get($key, $default = null)
+    public function get(mixed $key, mixed $default = null): mixed
     {
         if (isset($this->container[$key])) {
             return $this->container[$key];
@@ -114,15 +112,16 @@ class ArrayCollection implements Countable, IteratorAggregate, ArrayAccess
      * @param string $key
      * @param mixed $value
      */
-    public function set($key, $value)
+    public function set(string $key, mixed $value): void
     {
         $this->container[$key] = $value;
     }
 
     /**
      * @param mixed $value
+     * @return bool
      */
-    public function add($value): bool
+    public function add(mixed $value): bool
     {
         $this->container[] = $value;
         return true;
@@ -131,7 +130,7 @@ class ArrayCollection implements Countable, IteratorAggregate, ArrayAccess
     /**
      * @return null|mixed
      */
-    public function remove(string $key)
+    public function remove(string $key): mixed
     {
         if (isset($this->container[$key]) || array_key_exists($key, $this->container)) {
             $removed = $this->container[$key];
@@ -142,7 +141,7 @@ class ArrayCollection implements Countable, IteratorAggregate, ArrayAccess
         return null;
     }
 
-    public function removeAll()
+    public function removeAll(): void
     {
         $this->container = [];
     }

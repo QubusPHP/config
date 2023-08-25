@@ -7,8 +7,6 @@
  * @copyright  2020 Joshua Parker <josh@joshuaparker.blog>
  * @copyright  2016 Sinergi
  * @license    https://opensource.org/licenses/mit-license.php MIT License
- *
- * @since      1.0.0
  */
 
 declare(strict_types=1);
@@ -39,15 +37,16 @@ class Collection extends Configuration implements ArrayAccess, ConfigContainer
     /**
      * Set a config
      *
-     * @param array $config
-     * @return void|self
+     * @param string $key
+     * @param mixed $value
+     * @return self
      */
-    public function setConfigKey(string $key, $config)
+    public function setConfigKey(string $key, mixed $value): static
     {
         if (! isset($this->container[$key])) {
-            $this->container[$key] = $config;
+            $this->container[$key] = $value;
         } else {
-            $this->container[$key] = array_merge($this->container[$key], $config);
+            $this->container[$key] = array_merge($this->container[$key], $value);
         }
         return $this;
     }
@@ -68,16 +67,16 @@ class Collection extends Configuration implements ArrayAccess, ConfigContainer
     /**
      * Get a config
      *
-     * @param mixed $default
-     * @throws TypeException
+     * @param string $key
+     * @param mixed|null $default
      * @return mixed
+     * @throws TypeException
      */
-    public function getConfigKey(string $key, $default = null): mixed
+    public function getConfigKey(string $key, mixed $default = null): mixed
     {
         if (! is_string($key) || empty($key)) {
             throw new TypeException(
-                sprintf('Parameter %s passed to Config::get() is not a valid string resource.'),
-                $key
+                sprintf('Parameter %s passed to Config::get() is not a valid string resource.', $key),
             );
         }
 
@@ -97,7 +96,7 @@ class Collection extends Configuration implements ArrayAccess, ConfigContainer
     /**
      * @return $this
      */
-    public function reset()
+    public function reset(): static
     {
         $this->container = [];
         return $this;
@@ -106,6 +105,7 @@ class Collection extends Configuration implements ArrayAccess, ConfigContainer
     /**
      * @param string $key
      * @return mixed
+     * @throws TypeException
      */
     public function __get($key)
     {
@@ -113,26 +113,30 @@ class Collection extends Configuration implements ArrayAccess, ConfigContainer
     }
 
     /**
-     * @param string $key
+     * @param mixed $key
      * @param array|null $args
      * @return mixed
+     * @throws TypeException
      */
-    public function __call($key, $args = null)
+    public function __call(mixed $key, array $args = null)
     {
         return $this->offsetGet($key);
     }
 
     /**
-     * @param string $key
+     * @param mixed $key
      * @return bool
+     * @throws TypeException
      */
-    public function __isset($key)
+    public function __isset(mixed $key)
     {
         return $this->offsetExists($key);
     }
 
     /**
      * @param mixed $offset
+     * @return bool
+     * @throws TypeException
      */
     public function offsetExists(mixed $offset): bool
     {
@@ -143,6 +147,7 @@ class Collection extends Configuration implements ArrayAccess, ConfigContainer
     /**
      * @param mixed $offset
      * @return mixed
+     * @throws TypeException
      */
     public function offsetGet(mixed $offset): mixed
     {

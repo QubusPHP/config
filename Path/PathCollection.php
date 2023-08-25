@@ -7,8 +7,6 @@
  * @copyright  2020 Joshua Parker <josh@joshuaparker.blog>
  * @copyright  2016 Sinergi
  * @license    https://opensource.org/licenses/mit-license.php MIT License
- *
- * @since      1.0.0
  */
 
 declare(strict_types=1);
@@ -16,23 +14,21 @@ declare(strict_types=1);
 namespace Qubus\Config\Path;
 
 use Qubus\Config\ArrayCollection;
-use Qubus\Exception\Exception;
 
 /**
- * @method Path get($key)
+ * @method Path get(string $key)
  */
 class PathCollection extends ArrayCollection
 {
     /**
-     * @param string|Path $path
-     * @throws Exception
+     * @param mixed $value
      */
-    public function add($path): bool
+    public function add(mixed $value): bool
     {
-        if (! $path instanceof Path) {
-            $path = new ConfigPath($path);
+        if (! $value instanceof Path) {
+            $value = new ConfigPath($value);
         }
-        $this->container[] = $path;
+        $this->container[] = $value;
         return true;
     }
 }

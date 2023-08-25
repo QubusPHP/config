@@ -7,8 +7,6 @@
  * @copyright  2020 Joshua Parker <josh@joshuaparker.blog>
  * @copyright  2016 Sinergi
  * @license    https://opensource.org/licenses/mit-license.php MIT License
- *
- * @since      1.0.0
  */
 
 declare(strict_types=1);
@@ -22,19 +20,21 @@ interface ConfigContainer
     /**
      * Get an item from current configuration.
      *
-     * @param mixed $default
+     * @param string $key
+     * @param mixed|null $default
      * @return mixed
      * @throws Exception
      */
-    public function getConfigKey(string $key, $default = null);
+    public function getConfigKey(string $key, mixed $default = null): mixed;
 
     /**
      * Set an item in current configuration.
      *
+     * @param string $key
      * @param mixed $value
      * @return void|self
      */
-    public function setConfigKey(string $key, $value);
+    public function setConfigKey(string $key, mixed $value);
 
     /**
      * Checks if a key exists.

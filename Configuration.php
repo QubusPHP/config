@@ -7,8 +7,6 @@
  * @copyright  2020 Joshua Parker <josh@joshuaparker.blog>
  * @copyright  2016 Sinergi
  * @license    https://opensource.org/licenses/mit-license.php MIT License
- *
- * @since      1.0.0
  */
 
 declare(strict_types=1);
@@ -37,7 +35,7 @@ class Configuration
     /**
      * @param array|Configuration $config
      */
-    public function __construct($config)
+    public function __construct(array|Configuration $config)
     {
         $this->paths = new PathCollection();
         if (is_array($config)) {
@@ -72,7 +70,7 @@ class Configuration
     /**
      * @return $this
      */
-    public function setPaths(PathCollection $pathCollection)
+    public function setPaths(PathCollection $pathCollection): static
     {
         $this->paths = $pathCollection;
         return $this;
@@ -81,7 +79,7 @@ class Configuration
     /**
      * @return $this
      */
-    public function setEnvironment(?string $environment = null)
+    public function setEnvironment(?string $environment = null): static
     {
         if ($this->environment !== $environment) {
             if (method_exists($this, 'reset')) {
@@ -95,7 +93,7 @@ class Configuration
     /**
      * @return $this
      */
-    public function removeEnvironment()
+    public function removeEnvironment(): static
     {
         if ($this->environment !== null) {
             if (method_exists($this, 'reset')) {
@@ -119,7 +117,7 @@ class Configuration
     /**
      * @return $this
      */
-    public function setDotenv(Dotenv $dotenv)
+    public function setDotenv(Dotenv $dotenv): static
     {
         $this->dotenv = $dotenv;
         $this->loadDotenv();

@@ -35,7 +35,7 @@ class Configuration
     /**
      * @param array|Configuration $config
      */
-    public function __construct(array|Configuration $config)
+    public function __construct($config)
     {
         $this->paths = new PathCollection();
         if (is_array($config)) {

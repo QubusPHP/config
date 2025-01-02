@@ -13,13 +13,31 @@ declare(strict_types=1);
 
 namespace Qubus\Config\Helpers;
 
-use Qubus\Config\Configuration;
+use function getenv;
 
-function env($key, $default = null)
+/**
+ * Retrieve values from the environment variables
+ * that have been set. Especially useful for
+ * retrieving values set from the .env file for
+ * use in config files.
+ *
+ * @param string $key
+ * @param string|null $default
+ * @return bool|string|null
+ */
+function env(string $key, mixed $default = null): bool|string|null
 {
-    $dotenv = Configuration::$env;
-    if (is_array($dotenv) && isset($dotenv[$key])) {
-        return $dotenv[$key];
+    $value = $_ENV[$key] ?? $_SERVER[$key] ?? getenv($key);
+    // Not found? Return the default value.
+    if ($value === false) {
+        return $default;
     }
-    return $default;
+    // Handle any boolean values
+    return match (strtolower($value)) {
+        'true' => true,
+        'false' => false,
+        'empty' => '',
+        'null' => null,
+        default => $value,
+    };
 }

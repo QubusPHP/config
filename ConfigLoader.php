@@ -28,7 +28,7 @@ class ConfigLoader
 {
     protected static array $loaders = [
         PhpLoader::EXTENSION  => PhpLoader::class,
-        YamlLoader::EXTENSION => YamlLoader::class,
+        //YamlLoader::EXTENSION => YamlLoader::class,
     ];
 
     /**
@@ -64,6 +64,10 @@ class ConfigLoader
                 $path .= DIRECTORY_SEPARATOR . $env . DIRECTORY_SEPARATOR . $file;
             } else {
                 $path .= DIRECTORY_SEPARATOR . $file;
+            }
+
+            if (!file_exists($path)) {
+                continue;
             }
 
             if (file_exists($path)) {

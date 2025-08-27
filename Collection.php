@@ -118,7 +118,7 @@ class Collection extends Configuration implements ArrayAccess, ConfigContainer
      * @return mixed
      * @throws TypeException
      */
-    public function __call(mixed $key, array $args = null)
+    public function __call(mixed $key, ?array $args = null)
     {
         return $this->offsetGet($key);
     }

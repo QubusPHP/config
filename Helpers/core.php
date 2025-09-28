@@ -23,9 +23,9 @@ use function getenv;
  *
  * @param string $key
  * @param string|null $default
- * @return bool|string|null
+ * @return mixed
  */
-function env(string $key, mixed $default = null): bool|string|null
+function env(string $key, mixed $default = null): mixed
 {
     $value = $_ENV[$key] ?? $_SERVER[$key] ?? getenv($key);
     // Not found? Return the default value.

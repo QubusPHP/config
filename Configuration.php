@@ -16,6 +16,8 @@ namespace Qubus\Config;
 use Dotenv\Dotenv;
 use Qubus\Config\Path\PathCollection;
 
+use Qubus\Config\Path\PathNotFoundException;
+
 use function explode;
 use function getenv;
 use function is_array;
@@ -34,8 +36,9 @@ class Configuration
 
     /**
      * @param array|Configuration $config
+     * @throws PathNotFoundException
      */
-    public function __construct(array|Configuration $config)
+    public function __construct($config)
     {
         $this->paths = new PathCollection();
         if (is_array($config)) {

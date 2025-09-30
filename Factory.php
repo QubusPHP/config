@@ -17,6 +17,8 @@ use Interop\Config\ConfigurationTrait;
 use Interop\Config\RequiresConfig;
 use Interop\Config\RequiresMandatoryOptions;
 
+use Qubus\Config\Path\PathNotFoundException;
+
 use function is_array;
 
 class Factory implements RequiresMandatoryOptions, RequiresConfig
@@ -29,8 +31,9 @@ class Factory implements RequiresMandatoryOptions, RequiresConfig
     /**
      * @param array|Configuration $config
      * @return Collection
+     * @throws PathNotFoundException
      */
-    public function __invoke(array|Configuration $config): Collection
+    public function __invoke($config): Collection
     {
         if (is_array($config)) {
             $config = new Configuration($config);

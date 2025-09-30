@@ -20,7 +20,7 @@ use function strtr;
 
 class VariableDecorator implements ConfigContainer
 {
-    /** @var ConfigInterface $config */
+    /** @var ConfigContainer $config */
     public readonly ConfigContainer $config;
 
     /** @var array $variables */

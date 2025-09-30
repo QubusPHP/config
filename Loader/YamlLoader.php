@@ -19,7 +19,7 @@ use function file_get_contents;
 
 class YamlLoader implements Loader
 {
-    public const EXTENSION = 'yaml';
+    public const string EXTENSION = 'yaml';
 
     protected static ?Parser $parser = null;
 
@@ -37,7 +37,7 @@ class YamlLoader implements Loader
     /**
      * {@inheritdoc}
      */
-    public static function load($file)
+    public static function load(string $file): mixed
     {
         return self::getParser()->parse(file_get_contents($file));
     }

@@ -49,14 +49,14 @@ class Parser
      * @param array|null $haystack
      * @param string|null $key
      * @param null|array $sub
-     * @param null|mixed $default
+     * @param mixed|null $default
      * @return mixed
      */
     public static function getValue(
         ?array $haystack = null,
         ?string $key = null,
         ?array $sub = null,
-        $default = null
+        mixed $default = null
     ): mixed {
         if (empty($key) && ! isset($haystack)) {
             return $default;

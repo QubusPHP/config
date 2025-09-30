@@ -21,5 +21,5 @@ interface Loader
      * @param string $file
      * @return mixed
      */
-    public static function load($file);
+    public static function load(string $file): mixed;
 }

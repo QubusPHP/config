@@ -27,8 +27,9 @@ class Collection extends Configuration implements ArrayAccess, ConfigContainer
 
     /**
      * @param array|Configuration $config
+     * @return Collection
      */
-    public static function factory($config): Collection
+    public static function factory(array|Configuration $config): Collection
     {
         $factory = new Factory();
         return $factory($config);

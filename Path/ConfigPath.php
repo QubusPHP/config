@@ -19,8 +19,8 @@ use function sprintf;
 
 class ConfigPath implements Path
 {
-    /** @var string */
-    protected $path;
+    /** @var ?string */
+    protected ?string $path = null;
 
     /**
      * @throws PathNotFoundException

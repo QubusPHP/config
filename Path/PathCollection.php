@@ -22,6 +22,8 @@ class PathCollection extends ArrayCollection
 {
     /**
      * @param mixed $value
+     * @return bool
+     * @throws PathNotFoundException
      */
     public function add(mixed $value): bool
     {

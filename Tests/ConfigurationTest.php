@@ -5,13 +5,12 @@ declare(strict_types=1);
 namespace Qubus\Tests\Config;
 
 use Dotenv\Dotenv;
-use Qubus\Config\Collection;
 use PHPUnit\Framework\TestCase;
 use Qubus\Config\Configuration;
-use Qubus\Config\Factory;
 use Qubus\Config\Path\PathCollection;
 use Qubus\Config\Parser;
 use PHPUnit\Framework\Assert;
+use Qubus\Tests\Config\Fixtures\SimpleConfig;
 
 class ConfigurationTest extends TestCase
 {
@@ -63,22 +62,5 @@ class ConfigurationTest extends TestCase
         $port = Parser::getValue($config(), $key, $sub);
 
         Assert::assertEquals('s3cr3t', $port);
-    }
-}
-
-class SimpleConfig
-{
-    public function __invoke()
-    {
-        return [
-            'database' => [
-                'host' => 'localhost',
-                'port'    => 443,
-            ],
-            'application' => [
-                'name'   => 'configuration',
-                'secret' => 's3cr3t',
-            ],
-        ];
     }
 }

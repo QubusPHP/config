@@ -23,8 +23,8 @@ class Factory implements RequiresMandatoryOptions, RequiresConfig
 {
     use ConfigurationTrait;
 
-    public const VENDOR_NAME = 'qubus';
-    public const PACKAGE_NAME = 'config';
+    public const string VENDOR_NAME = 'qubus';
+    public const string PACKAGE_NAME = 'config';
 
     /**
      * @param array|Configuration $config

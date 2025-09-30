@@ -24,9 +24,9 @@ use function method_exists;
 class Configuration
 {
     /** @var array $env */
-    public static $env;
+    public static array $env = [];
 
-    protected PathCollection $paths;
+    protected ?PathCollection $paths = null;
 
     protected ?Dotenv $dotenv = null;
 
@@ -35,7 +35,7 @@ class Configuration
     /**
      * @param array|Configuration $config
      */
-    public function __construct($config)
+    public function __construct(array|Configuration $config)
     {
         $this->paths = new PathCollection();
         if (is_array($config)) {

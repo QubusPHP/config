@@ -14,7 +14,6 @@ class FactoryTest extends TestCase
     public function testFactory()
     {
         $factory = new Factory();
-        /** @var Collection $collection */
         $collection = $factory([]);
         Assert::assertInstanceOf(Collection::class, $collection);
     }

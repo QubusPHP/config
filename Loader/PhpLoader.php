@@ -15,12 +15,12 @@ namespace Qubus\Config\Loader;
 
 class PhpLoader implements Loader
 {
-    public const EXTENSION = 'php';
+    public const string EXTENSION = 'php';
 
     /**
      * {@inheritdoc}
      */
-    public static function load($file)
+    public static function load(string $file): mixed
     {
         return require $file;
     }

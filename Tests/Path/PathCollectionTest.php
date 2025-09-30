@@ -15,12 +15,9 @@ class PathCollectionTest extends TestCase
     {
         $pathCollection = new PathCollection();
         $pathCollection->add(__DIR__ . "/../files");
-        Assert::assertEquals(realpath(__DIR__ . "/../files"), $pathCollection->get(0)->getPath());
+        Assert::assertEquals(realpath(__DIR__ . "/../files"), $pathCollection->get((string) '0')->getPath());
     }
 
-    /**
-     * @expectedException \Qubus\Config\Path\PathNotFoundException
-     */
     public function testAddBadPath()
     {
         $this->expectException(\Qubus\Config\Path\PathNotFoundException::class);
@@ -47,7 +44,7 @@ class PathCollectionTest extends TestCase
             ]
         ]);
         Assert::assertCount(2, $config->getPaths());
-        Assert::assertEquals(realpath(__DIR__ . "/../files"), $config->getPaths()->get(0)->getPath());
-        Assert::assertEquals(realpath(__DIR__ . "/../files/testdev1"), $config->getPaths()->get(1)->getPath());
+        Assert::assertEquals(realpath(__DIR__ . "/../files"), $config->getPaths()->get((string) '0')->getPath());
+        Assert::assertEquals(realpath(__DIR__ . "/../files/testdev1"), $config->getPaths()->get((string) '1')->getPath());
     }
 }

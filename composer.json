@@ -15,7 +15,7 @@
 		"psr/container": "^2",
 		"qubus/exception": "^4",
 		"sandrokeil/interop-config": "^2",
-		"symfony/yaml": "^6",
+		"symfony/yaml": "^8",
 		"vlucas/phpdotenv": "^5"
 	},
 	"require-dev": {

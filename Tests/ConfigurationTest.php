@@ -14,7 +14,7 @@ use Qubus\Tests\Config\Fixtures\SimpleConfig;
 
 class ConfigurationTest extends TestCase
 {
-    public function testArray()
+    public function testConfigurationArray()
     {
         $configuration = new Configuration([
             'path' =>  __DIR__ . "/files",

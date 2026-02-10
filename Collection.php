@@ -68,12 +68,7 @@ class Collection extends Configuration implements ArrayAccess, ConfigContainer
     }
 
     /**
-     * Get a config
-     *
-     * @param string $key
-     * @param mixed|null $default
-     * @return mixed
-     * @throws TypeException
+     * @inheritDoc
      */
     public function getConfigKey(string $key, mixed $default = null): mixed
     {

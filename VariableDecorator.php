@@ -42,7 +42,7 @@ class VariableDecorator implements ConfigContainer
      */
     public function getConfigKey(string $key, mixed $default = null): mixed
     {
-        return $this->replaceVariables($this->config->getConfigKey($key));
+        return $this->replaceVariables($this->config->getConfigKey($key, $default));
     }
 
     /**
@@ -59,6 +59,46 @@ class VariableDecorator implements ConfigContainer
     public function hasConfigKey(string $key): bool
     {
         return $this->config->hasConfigKey($key);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function string(string $key, mixed $default = null): string
+    {
+        return $this->replaceVariables($this->config->string($key, $default));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function integer(string $key, mixed $default = null): int
+    {
+        return $this->replaceVariables($this->config->integer($key, $default));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function float(string $key, mixed $default = null): float
+    {
+        return $this->replaceVariables($this->config->float($key, $default));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function boolean(string $key, mixed $default = null): bool
+    {
+        return $this->replaceVariables($this->config->boolean($key, $default));
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function array(string $key, mixed $default = null): array
+    {
+        return $this->replaceVariables($this->config->array($key, $default));
     }
 
     /**

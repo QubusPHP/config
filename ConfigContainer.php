@@ -24,7 +24,7 @@ interface ConfigContainer
      * @param string $key
      * @param mixed|null $default
      * @return mixed
-     * @throws Exception
+     * @throws TypeException
      */
     public function getConfigKey(string $key, mixed $default = null): mixed;
 

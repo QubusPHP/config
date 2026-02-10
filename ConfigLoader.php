@@ -28,7 +28,7 @@ class ConfigLoader
 {
     protected static array $loaders = [
         PhpLoader::EXTENSION  => PhpLoader::class,
-        //YamlLoader::EXTENSION => YamlLoader::class,
+        YamlLoader::EXTENSION => YamlLoader::class,
     ];
 
     /**
@@ -70,15 +70,13 @@ class ConfigLoader
                 continue;
             }
 
-            if (file_exists($path)) {
-                if (is_string($loader)) {
-                    $loader = self::$loaders[$fileType] = new $loader();
-                }
-                if ($loader instanceof Loader) {
-                    $retval = $loader::load($path);
-                    if (! is_array($retval)) {
-                        $retval = [];
-                    }
+            if (is_string($loader)) {
+                $loader = self::$loaders[$fileType] = new $loader();
+            }
+            if ($loader instanceof Loader) {
+                $retval = $loader::load($path);
+                if (! is_array($retval)) {
+                    $retval = [];
                 }
             }
         }

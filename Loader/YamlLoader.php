@@ -24,7 +24,7 @@ class YamlLoader implements Loader
     protected static ?Parser $parser = null;
 
     /**
-     * Gets the parser to parse yaml strings to PHP arrays.
+     * Gets the parser to parse YAML strings to PHP arrays.
      */
     protected static function getParser(): Parser
     {

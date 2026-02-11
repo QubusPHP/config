@@ -14,6 +14,7 @@
 		"php": ">=8.4",
 		"psr/container": "^2",
 		"qubus/exception": "^4",
+		"qubus/inheritance": "^4.2",
 		"sandrokeil/interop-config": "^2",
 		"symfony/yaml": "^8",
 		"vlucas/phpdotenv": "^5"

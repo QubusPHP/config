@@ -19,7 +19,7 @@
 		"vlucas/phpdotenv": "^5"
 	},
 	"require-dev": {
-		"qubus/qubus-coding-standard": "^2"
+		"qubus/qubus-coding-standard": "^2.1.2"
 	},
 	"autoload": {
 		"psr-4": {

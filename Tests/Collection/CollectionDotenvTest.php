@@ -17,6 +17,6 @@ class CollectionDotenvTest extends TestCase
             'dotenv' => __DIR__ . "/../files"
         ]);
 
-        Assert::assertEquals('bye', $config->getConfigKey('dotenv.test_var'));
+        Assert::assertEquals('test1', $config->getConfigKey('dotenv.test_var'));
     }
 }

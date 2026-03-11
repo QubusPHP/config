@@ -31,14 +31,14 @@ class CollectionEnvironmentTest extends TestCase
 
     public function testConfigGetWholeFile()
     {
-        $test = $this->config->getConfigKey('database');
+        $test = $this->config->array('database');
         Assert::assertEquals("pdo_mysql", $test['connections']['default']['driver']);
         Assert::assertEquals("xxxxxxxxxxxxxxxxxxx", $test['connections']['default']['password']);
     }
 
     public function testEGetter()
     {
-        $test = $this->config->getConfigKey('app.timezone');
+        $test = $this->config->string('app.timezone');
         Assert::assertEquals("Europe/Berlin", $test);
     }
 
@@ -63,7 +63,7 @@ class CollectionEnvironmentTest extends TestCase
 
     public function testConfigGetterArrayDefault()
     {
-        $test = $this->config->getConfigKey('database.connections.default.persistent', true);
+        $test = $this->config->boolean('database.connections.default.persistent', true);
         Assert::assertTrue($test);
     }
 

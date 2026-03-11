@@ -13,7 +13,8 @@
 	"require": {
 		"php": ">=8.2",
 		"psr/container": "^2",
-		"qubus/exception": "^3.0",
+		"qubus/exception": "^3",
+		"qubus/inheritance": "^3.1",
 		"sandrokeil/interop-config": "^2.2",
 		"symfony/yaml": "^6.3",
 		"vlucas/phpdotenv": "^5.5"
@@ -46,7 +47,8 @@
 		"optimize-autoloader": true,
 		"sort-packages": true,
 		"allow-plugins": {
-			"dealerdirect/phpcodesniffer-composer-installer": true
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"pestphp/pest-plugin": true
 		}
 	}
 }

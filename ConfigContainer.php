@@ -14,8 +14,9 @@ declare(strict_types=1);
 namespace Qubus\Config;
 
 use Qubus\Exception\Exception;
+use Qubus\Inheritance\Contract\ValueType;
 
-interface ConfigContainer
+interface ConfigContainer extends ValueType
 {
     /**
      * Get an item from current configuration.

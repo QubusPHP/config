@@ -74,9 +74,9 @@ class Collection extends Configuration implements ArrayAccess, ConfigContainer
      */
     public function getConfigKey(string $key, mixed $default = null): mixed
     {
-        if (! is_string($key) || empty($key)) {
+        if (empty($key)) {
             throw new TypeException(
-                sprintf('Parameter %s passed to Config::get() is not a valid string resource.', $key),
+                sprintf('Parameter %s passed to Config::get() cannot be an empty string.', $key),
             );
         }
 
@@ -91,6 +91,106 @@ class Collection extends Configuration implements ArrayAccess, ConfigContainer
         }
 
         return Parser::getValue($this->container[$file], $configKey, $sub, $default);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function string(string $key, mixed $default = null): string
+    {
+        $value = $this->getConfigKey($key, $default);
+
+        if (!is_string($value)) {
+            throw new TypeException(
+                sprintf(
+                    'Configuration value for key [%s] must be a string, %s given.',
+                    $key,
+                    gettype($value)
+                )
+            );
+        }
+
+        return $value;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function integer(string $key, mixed $default = null): int
+    {
+        $value = $this->getConfigKey($key, $default);
+
+        if (!is_int($value)) {
+            throw new TypeException(
+                sprintf(
+                    'Configuration value for key [%s] must be an integer, %s given.',
+                    $key,
+                    gettype($value)
+                )
+            );
+        }
+
+        return $value;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function float(string $key, mixed $default = null): float
+    {
+        $value = $this->getConfigKey($key, $default);
+
+        if (!is_float($value)) {
+            throw new TypeException(
+                sprintf(
+                    'Configuration value for key [%s] must be a float, %s given.',
+                    $key,
+                    gettype($value)
+                )
+            );
+        }
+
+        return $value;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function boolean(string $key, mixed $default = null): bool
+    {
+        $value = $this->getConfigKey($key, $default);
+
+        if (!is_bool($value)) {
+            throw new TypeException(
+                sprintf(
+                    'Configuration value for key [%s] must be a boolean, %s given.',
+                    $key,
+                    gettype($value)
+                )
+            );
+        }
+
+        return $value;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function array(string $key, mixed $default = null): array
+    {
+        $value = $this->getConfigKey($key, $default);
+
+        if (!is_array($value)) {
+            throw new TypeException(
+                sprintf(
+                    'Configuration value for key [%s] must be an array, %s given.',
+                    $key,
+                    gettype($value)
+                )
+            );
+        }
+
+        return $value;
     }
 
     /**

@@ -57,29 +57,30 @@ class ConfigLoader
     public static function loadFile($path, ?string $env, string $file): array
     {
         $retval = [];
+
+        $baseFile = pathinfo($file, PATHINFO_FILENAME);
+
         foreach (self::$loaders as $fileType => $loader) {
-            $file = "{$file}.{$fileType}";
+            $filename = "{$baseFile}.{$fileType}";
 
-            if ($env) {
-                $path .= DIRECTORY_SEPARATOR . $env . DIRECTORY_SEPARATOR . $file;
-            } else {
-                $path .= DIRECTORY_SEPARATOR . $file;
-            }
+            $candidate = $env
+                    ? $path . DIRECTORY_SEPARATOR . $env . DIRECTORY_SEPARATOR . $filename
+                    : $path . DIRECTORY_SEPARATOR . $filename;
 
-            if (!file_exists($path)) {
+            if (! file_exists($candidate)) {
                 continue;
             }
 
             if (is_string($loader)) {
                 $loader = self::$loaders[$fileType] = new $loader();
             }
+
             if ($loader instanceof Loader) {
-                $retval = $loader::load($path);
-                if (! is_array($retval)) {
-                    $retval = [];
-                }
+                $loaded = $loader::load($candidate);
+                $retval = is_array($loaded) ? $loaded : [];
             }
         }
+
         return $retval;
     }
 

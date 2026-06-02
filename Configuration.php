@@ -130,11 +130,17 @@ class Configuration
     private function loadDotenv(): array
     {
         $retval = [];
-        $values = $this->dotenv->load();
-        foreach ($values as $value) {
-            $parts = explode("=", $value, 2);
-            $retval[$parts[0]] = getenv($parts[0]);
+
+        if ($this->dotenv === null) {
+            return self::$env = $retval;
         }
+
+        $values = $this->dotenv->safeLoad();
+
+        foreach ($values as $key => $value) {
+            $retval[$key] = getenv($key) ?: ($_ENV[$key] ?? $_SERVER[$key] ?? $value);
+        }
+
         return self::$env = $retval;
     }
 }

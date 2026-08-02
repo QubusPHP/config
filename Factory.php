@@ -13,10 +13,9 @@ declare(strict_types=1);
 
 namespace Qubus\Config;
 
-use Interop\Config\ConfigurationTrait;
-use Interop\Config\RequiresConfig;
-use Interop\Config\RequiresMandatoryOptions;
-
+use Qubus\Config\Interop\ConfigurationTrait;
+use Qubus\Config\Interop\RequiresConfig;
+use Qubus\Config\Interop\RequiresMandatoryOptions;
 use Qubus\Config\Path\PathNotFoundException;
 
 use function is_array;

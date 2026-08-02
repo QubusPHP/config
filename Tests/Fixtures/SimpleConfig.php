@@ -9,14 +9,14 @@ class SimpleConfig
     public function __invoke(): array
     {
         return [
-                'database' => [
-                        'host' => 'localhost',
-                        'port'    => 443,
-                ],
-                'application' => [
-                        'name'   => 'configuration',
-                        'secret' => 's3cr3t',
-                ],
+            'database' => [
+                'host' => 'localhost',
+                'port'    => 443,
+            ],
+            'application' => [
+                'name'   => 'configuration',
+                'secret' => 's3cr3t',
+            ],
         ];
     }
 }

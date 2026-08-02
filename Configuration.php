@@ -15,10 +15,8 @@ namespace Qubus\Config;
 
 use Dotenv\Dotenv;
 use Qubus\Config\Path\PathCollection;
-
 use Qubus\Config\Path\PathNotFoundException;
 
-use function explode;
 use function getenv;
 use function is_array;
 use function method_exists;
@@ -127,6 +125,9 @@ class Configuration
         return $this;
     }
 
+    /**
+     * @return array
+     */
     private function loadDotenv(): array
     {
         $retval = [];
@@ -138,7 +139,10 @@ class Configuration
         $values = $this->dotenv->safeLoad();
 
         foreach ($values as $key => $value) {
-            $retval[$key] = getenv($key) ?: ($_ENV[$key] ?? $_SERVER[$key] ?? $value);
+            $environmentValue = getenv($key);
+            $retval[$key] = $environmentValue !== false
+            ? $environmentValue
+            : ($_ENV[$key] ?? $_SERVER[$key] ?? $value);
         }
 
         return self::$env = $retval;

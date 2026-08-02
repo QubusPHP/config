@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Qubus\Config;
 
 use function array_slice;
+use function array_key_exists;
 use function count;
 use function current;
 use function explode;
@@ -68,21 +69,14 @@ class Parser
             }
             return null;
         } elseif (! empty($key) && empty($sub)) {
-            if (empty($haystack[$key]) && null !== $default) {
-                return $default;
-            } elseif (isset($haystack[$key])) {
+            if (array_key_exists($key, $haystack ?? [])) {
                 return $haystack[$key];
             }
-            return null;
+            return $default;
         } elseif (is_array($sub)) {
             $array = $haystack[$key] ?? [];
             $value = self::findInMultiArray($sub, $array);
-            if (empty($value) && null !== $default) {
-                return $default;
-            } elseif (isset($value)) {
-                return $value;
-            }
-            return null;
+            return $value ?? $default;
         }
         return null;
     }

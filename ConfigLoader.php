@@ -64,8 +64,8 @@ class ConfigLoader
             $filename = "{$baseFile}.{$fileType}";
 
             $candidate = $env
-                    ? $path . DIRECTORY_SEPARATOR . $env . DIRECTORY_SEPARATOR . $filename
-                    : $path . DIRECTORY_SEPARATOR . $filename;
+            ? $path . DIRECTORY_SEPARATOR . $env . DIRECTORY_SEPARATOR . $filename
+            : $path . DIRECTORY_SEPARATOR . $filename;
 
             if (! file_exists($candidate)) {
                 continue;

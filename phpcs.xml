@@ -13,6 +13,7 @@
 
     <!-- Paths to check -->
     <file>./Loader</file>
+    <file>./Interop</file>
     <file>./Path</file>
     <file>./ArrayCollection.php</file>
     <file>./Collection.php</file>
@@ -26,4 +27,15 @@
 
     <!-- Include rules from the Qubus Coding Standard -->
     <rule ref="QubusCodingStandard"/>
+
+    <!-- These names are part of the embedded interop-config public API. -->
+    <rule ref="SlevomatCodingStandard.Classes.SuperfluousTraitNaming.SuperfluousSuffix">
+        <exclude-pattern>Interop/ConfigurationTrait.php</exclude-pattern>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Classes.SuperfluousInterfaceNaming.SuperfluousSuffix">
+        <exclude-pattern>Interop/Exception/ExceptionInterface.php</exclude-pattern>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Classes.SuperfluousAbstractClassNaming.SuperfluousPrefix">
+        <exclude-pattern>Interop/Tool/AbstractCommand.php</exclude-pattern>
+    </rule>
 </ruleset>

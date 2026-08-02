@@ -43,4 +43,20 @@ class ParserTest extends TestCase
         [$file, $key, $sub] = Parser::getKey('file.hi.find.this');
         Assert::assertEquals('Hello', Parser::getValue($kaystack, $key, $sub));
     }
+
+    public function testFalseyValuesAreNotReplacedByDefault(): void
+    {
+        $config = [
+            'zero' => 0,
+            'false' => false,
+            'empty' => '',
+            'nested' => ['zero' => 0],
+        ];
+
+        Assert::assertSame(0, Parser::getValue($config, 'zero', null, 42));
+        Assert::assertFalse(Parser::getValue($config, 'false', null, true));
+        Assert::assertSame('', Parser::getValue($config, 'empty', null, 'fallback'));
+        Assert::assertSame(0, Parser::getValue($config, 'nested', ['zero'], 42));
+        Assert::assertSame('fallback', Parser::getValue($config, 'missing', null, 'fallback'));
+    }
 }

@@ -15,6 +15,7 @@ namespace Qubus\Config;
 
 use Psr\Container\ContainerInterface;
 use ReflectionClass;
+use ReflectionException;
 
 use function in_array;
 use function is_array;
@@ -68,23 +69,25 @@ class Container implements ContainerInterface
         if (isset($this->container[$id])) {
             return $this->container[$id];
         }
-        foreach ($this->container as $alias => $concrete) {
+        try {
             $class = new ReflectionClass($id);
-            if (false === $class) {
-                return null;
-            }
+        } catch (ReflectionException) {
+            return null;
+        }
+
+        foreach ($this->container as $alias => $concrete) {
+            $candidate = $class;
             do {
-                $name = $class->getName();
+                $name = $candidate->getName();
                 if ($alias === $name) {
                     return $concrete;
                 }
-                $interfaces = $class->getInterfaceNames();
-                if (is_array($interfaces) && in_array($alias, $interfaces)) {
+                $interfaces = $candidate->getInterfaceNames();
+                if (is_array($interfaces) && in_array($alias, $interfaces, true)) {
                     return $concrete;
                 }
-                $class = $class->getParentClass();
-            } while (false !== $class);
-            return null;
+                $candidate = $candidate->getParentClass();
+            } while (false !== $candidate);
         }
         return null;
     }
